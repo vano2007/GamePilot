@@ -3,6 +3,7 @@ package com.example.gamepilot;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.view.MotionEvent;
 import android.view.SurfaceView;
 
 public class GameView extends SurfaceView implements Runnable{
@@ -127,5 +128,32 @@ public class GameView extends SurfaceView implements Runnable{
         } catch (InterruptedException e) { // исключение на случай зависания потока
             e.printStackTrace();
         }
+    }
+
+    // метод обработки касания экрана (для управления самолётом)
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+
+        // обработка событий касания экрана
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN: // нажатие
+                // если пользователь нажал на левую сторону экрана
+                if (event.getX() < (screenX / 2)) {
+                    // то движение самолёта вверх
+                    flight.setGoingUp(true);
+                } else if (event.getX() >= (screenX / 2)){
+
+                }
+                break;
+            case MotionEvent.ACTION_MOVE: // движение по экрану
+
+                break;
+            case MotionEvent.ACTION_UP: // отпускание
+                // при отпускании экрана самолёт начнёт снижаться
+                flight.setGoingUp(false);
+                break;
+        }
+
+        return true; // активация обработки касания экрана
     }
 }

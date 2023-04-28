@@ -28,4 +28,17 @@ public class GameActivity extends AppCompatActivity {
         // передача gameView в представление активити
         setContentView(gameView);
     }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // ввод игры в режим паузы
+        gameView.pauseThread();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // ввод игры в активный режим
+        gameView.resumeThread();
+    }
 }
