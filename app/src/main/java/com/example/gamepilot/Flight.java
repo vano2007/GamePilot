@@ -92,6 +92,4 @@ public class Flight {
         this.height = height;
     }
 
-
-
 }

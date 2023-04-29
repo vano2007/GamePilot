@@ -44,4 +44,5 @@ public class Background {
     public void setBackground(Bitmap background) {
         this.background = background;
     }
+
 }
